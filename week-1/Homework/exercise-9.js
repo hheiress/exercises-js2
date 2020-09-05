@@ -27,7 +27,7 @@ In addition will substract 1 in the product stock of bought products
 6. If there is not enough stock, the product cannot be added to the shopping cart
 */
 
-var products = [product1,product2,product3,product4];
+var products = [];
 
 var product1 = {
   id: 1,
@@ -63,35 +63,47 @@ var shoppingCart = {
   totalPrice: 0,
   selectedProducts: []
 };
-//function addProduct(productID){
- // this.shoppingCart.push(productID)
-//}
-function addToShoppingCart(id){
-  for (product of products) {
-  const shoppingList = product.id === id;
-  if (shoppingList){
-    selectedProducts+product;
-    return shoppingCart.totalPrice + product.price;
-  }
-}}
 
-//function addToShoppingCart(id){
- // let available = products.map(function(item){
-  //  if (item.id === id && item.stock > 0){
-    //  shoppingCart.totalPrice = shoppingCart.totalPrice + item.price;
-    //  return shoppingCart.selectedProducts.push(item);
-  //}})
- // return available;
-  
-//}
-
-
-function removeFromShoppingCart(id){
- 
+function getProductbyID(id){
+  return products.find(function (item){ // find() returns one element 
+    if (item.id === id){
+      return true;
+    }else{
+      return false;
+    }
+  })
 }
 
+function addToShoppingCart(id){
+ let available = products.map(function(item){
+    if (item.id === id && item.stock > 0){
+      shoppingCart.totalPrice = shoppingCart.totalPrice + item.price;
+      return shoppingCart.selectedProducts.push(item);
+  }})
+  return available;
+  
+}
+function removeFromShoppingCart(id){
+ products.map(function(item){
+    if (item.id ===id){
+      shoppingCart.totalPrice=shoppingCart.totalPrice-item.price;
+      shoppingCart.selectedProducts=shoppingCart.selectedProducts.filter(function(item){
+        if (item.id !== id){ //если массив не равен данному айди, то его нужно вернуть 
+          return true;
+        }else {
+          return false;
+        }
+    })}
+  })
+}
 function shop(){
-
+  shoppingCart.selectedProducts.map(function(item){
+    console.log(item);
+   getProductbyID(item.id).stock = getProductbyID(item.id).stock-1;// item.id - у этого продукта на складе
+   console.log(item);
+  })
+shoppingCart.totalPrice=0;
+shoppingCart.selectedProducts=[];
 }
 
 //results

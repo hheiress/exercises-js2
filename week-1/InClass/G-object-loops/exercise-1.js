@@ -8,19 +8,22 @@ const studentGrades = {
     abdul: 19,
   };
   
-  const studentKeys =Object.keys(studentGrades)
-  const keysGreaterThan18 =studentKeys.keys.filter(function(key){
-   return studentGrades[key] > 18;
- })
-keysGreaterThan18.forEach(function(key){
-  console.log(key.toUpperCase()+" - "+studentGrades[key])
-})
-//or
+ //// LONGEST WAY
+// const studentKeys = Object.keys(studentGrades)
+// const keysWithScoresGreaterThan18 = studentKeys.filter(function(key) {
+//   return studentGrades[key] > 18
+// })
+// keysWithScoresGreaterThan18.forEach(function(key) {
+//   console.log(key.toUpperCase() + ' - ' + studentGrades[key])
+// })
+//// MEDIUM WAY
+// const studentKeys = Object.keys(studentGrades)
+// studentKeys.forEach(function(key) {
+//   const score = studentGrades[key]
+//   if (score > 18)
+//     console.log(key.toUpperCase() + ' - ' + score)
+// })
 
-
-
-
-// OR
 
   for (const key in studentGrades){
     if (studentGrades[key] >18){

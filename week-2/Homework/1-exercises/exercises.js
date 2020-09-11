@@ -15,7 +15,16 @@
  */
 function exerciseOne(arrayOfPeople) {
   let content = document.querySelector("#content");
-}
+
+  arrayOfPeople.forEach(function(item){
+    let contentH1 = document.createElement("h1");
+    content.appendChild(contentH1);
+    contentH1.innerText=item.name;
+    
+    let contentH2 = document.createElement("h2")
+    content.appendChild(contentH2);
+    contentH2.innerText=item.job;
+})}
 
 /**
  *
@@ -25,8 +34,19 @@ function exerciseOne(arrayOfPeople) {
  *
  */
 function exerciseTwo(shopping) {
-  //Write your code in here
+  let content = document.querySelector("#content");
+
+  let ulList = document.createElement("ul");
+  content.appendChild(ulList);
+
+  shopping.forEach(function(item){
+    let shoppingList = document.createElement("li");
+    shoppingList.innerText= item;
+    ulList.appendChild(shoppingList);})
+  
 }
+  //Write your code in here
+
 
 /**
     I'd like to display my three favorite books inside a nice webpage!
@@ -58,9 +78,41 @@ function exerciseTwo(shopping) {
     The end result should look something like this: https://hyf-js2-week1-makeme-ex1-demo.herokuapp.com/
 **/
 function exerciseThree(books) {
-  //Write your code in here
-}
+ let content = document.querySelector("#content");
 
+ let firstInfoAbout=document.createElement("p");
+    content.appendChild(firstInfoAbout);
+ let listOfBooks = document.createElement("ul");
+    firstInfoAbout.appendChild(listOfBooks);
+   
+let counter = 0;
+  books.forEach(function(item){
+    let liBook = document.createElement("li");
+    
+    listOfBooks.appendChild(liBook);
+    liBook.innerText = item.title + " - " + item.author;
+    if(item.alreadyRead===true){
+      liBook.style.backgroundColor="red";
+    }else if(item.alreadyRead===false){
+      liBook.style.backgroundColor="green";
+    }
+   
+  let image = document.createElement("img");
+   image.setAttribute("src",links[counter]);
+   counter++;
+   liBook.appendChild(image);
+})}
+
+let links=["/week-2/Homework/1-exercises/image/im1.jpeg",
+"/week-2/Homework/1-exercises/image/im2.jpeg",
+"/week-2/Homework/1-exercises/image/im3.jpeg"
+]
+
+
+
+
+
+//"week-2/Homework/1-exercises/9780307476708.jpeg"]
 //
 //
 //

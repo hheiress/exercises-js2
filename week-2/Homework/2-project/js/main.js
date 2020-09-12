@@ -57,7 +57,6 @@ let registerNow=document.querySelector("form .btn-primary");
     let checkInfo =document.querySelector("#exampleTextarea");
    
 function checkForm(){
-
     let resultForm=0;
     if(checkEmail.value.length<1 || !checkEmail.value.includes("@")){
         checkEmail.style.backgroundColor = "red";

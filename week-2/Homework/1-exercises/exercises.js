@@ -79,18 +79,17 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
  let content = document.querySelector("#content");
-
- let firstInfoAbout=document.createElement("p");
-    content.appendChild(firstInfoAbout);
  let listOfBooks = document.createElement("ul");
-    firstInfoAbout.appendChild(listOfBooks);
+    content.appendChild(listOfBooks);
    
 let counter = 0;
   books.forEach(function(item){
-    let liBook = document.createElement("li");
+    let firstInfoAbout=document.createElement("p");
+   listOfBooks.appendChild(firstInfoAbout);
+   firstInfoAbout.innerText = item.title + " - " + item.author;
     
-    listOfBooks.appendChild(liBook);
-    liBook.innerText = item.title + " - " + item.author;
+    let liBook = document.createElement("li");
+    firstInfoAbout.appendChild(liBook);
     if(item.alreadyRead===true){
       liBook.style.backgroundColor="red";
     }else if(item.alreadyRead===false){
@@ -98,9 +97,9 @@ let counter = 0;
     }
    
   let image = document.createElement("img");
+   liBook.appendChild(image);
    image.setAttribute("src",links[counter]);
    counter++;
-   liBook.appendChild(image);
 })}
 
 let links=["/week-2/Homework/1-exercises/image/im1.jpeg",

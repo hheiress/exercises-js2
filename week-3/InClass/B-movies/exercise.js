@@ -57,11 +57,47 @@ var movies = [
     haveWatched: false,
   },
 ];
+function addMovietoScreen(movie){
+  let findElement =document.querySelector("#all-movies");
+  let createElement=document.createElement("p");
+    createElement.innerText = movie.title + " - "+ movie.director;
+    findElement.appendChild(createElement)
+    let moviesNumber=document.querySelector ("#movies-number");
+      moviesNumber.innerText=movies.length;
+}
 
+//Task1
 // create showMovies function
 
-
+function showMovies(callbackFunc){
+  setTimeout(
+    function(){
+      for( let movie of movies){
+        callbackFunc(movie)
+      } 
+},1000)
+}
+//Task2
 // create a new movie object for your favorite movie
+let myFavMovie={
+    title: "The Harry Potter",
+    director: "Joan Rouling",
+    type: "fantasy",
+    haveWatched: true,
+  }
+ 
+function addMovie(newMovie,callbackFunc){
+    setTimeout(()=>{
+     movies.push(newMovie);
+     callbackFunc(newMovie);
+    },2000)
+   }
+addMovie(myFavMovie);
+showMovies(addMovietoScreen)
 
 
+
+
+
+//Task4
 // create addMovies function

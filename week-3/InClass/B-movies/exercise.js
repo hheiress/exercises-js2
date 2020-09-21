@@ -85,19 +85,14 @@ let myFavMovie={
     type: "fantasy",
     haveWatched: true,
   }
- 
+ //Task4
 function addMovie(newMovie,callbackFunc){
     setTimeout(()=>{
      movies.push(newMovie);
      callbackFunc(newMovie);
     },2000)
    }
-addMovie(myFavMovie);
-showMovies(addMovietoScreen)
 
+showMovies(addMovietoScreen);
+addMovie(myFavMovie,addMovietoScreen);
 
-
-
-
-//Task4
-// create addMovies function

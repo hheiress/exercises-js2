@@ -1,10 +1,11 @@
+let changeTime;
 function setAlarm() {
   
   let alarmTime = document.querySelector("#alarmSet").valueAsNumber;
   
   let text = document.querySelector("#timeRemaining");
   let currentTime=alarmTime;
- let changeTime = setInterval(
+  changeTime=setInterval(
     function(num){
       if(currentTime===0){
         clearInterval(changeTime)
@@ -25,25 +26,14 @@ function setAlarm() {
 
 }
 
+let pauseButton =document.querySelector("#pause");
+ pauseButton.addEventListener("click",pauseAlarm);
 function pauseAlarm(){
-  //let bodyColorChange=
-  let bodyColor2 = document.querySelector("body");
-        bodyColor2.style.backgroundColor="white";
-}
-//document.addEventListener("DOMContentLoaded", function(){
- // let pauseButton =document.querySelector(".pause");
-// pauseButton.addEventListener("click", alert("hi"));
+  clearInterval(changeTime)
   
-//})
-//console.log(pauseButton);
-//function pauseAlarm(event){
- // alarm("event");
-//    if(event.target.classList.contains("paused")!==true){
-//  clearInterval(changeTime)
- // event.target.classList.add("paused")
- // let textPaused=text.innerText;
-//}}
+}
 
+  
 
 // DO NOT EDIT BELOW HERE
 
@@ -55,7 +45,7 @@ function setup() {
   });
 
   document.getElementById("stop").addEventListener("click", () => {
-    pauseAlarm();
+    stopAlarm();
   });
 }
 
@@ -63,7 +53,7 @@ function playAlarm() {
   audio.play();
 }
 
-function pauseAlarm() {
+function stopAlarm() {
   audio.pause();
 }
 
